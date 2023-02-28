@@ -10,6 +10,7 @@ import datetime
 import shutil
 import numpy as np
 import yaml
+from pathlib import Path
 # - GAMMA's Python integration with the py_gamma module
 import py_gamma as pg
 import py_gamma2019 as pg9
@@ -69,40 +70,37 @@ def main() -> None:
 
     # - Print Processing Parameters
     # - Input/Output Directories
-    data_dir = proc_param['global_parameters']['data_directory']
-    out_dir = proc_param['global_parameters']['output_directory']
+    data_dir = Path(proc_param['global_parameters']['data_directory'])
+    out_dir = Path(proc_param['global_parameters']['output_directory'])
 
     # - Processing Parameters
-    ref = proc_param['global_parameters']['refrence_slc']  # - Reference SLC
+    ref = proc_param['global_parameters']['refrence_slc']   # - Reference SLC
     sec = proc_param['global_parameters']['seconday_slc']   # - Secondary SLC
 
     # - Track Output directory
-    if not os.path.isdir(os.path.join(out_dir, f'Track{ref}-{sec}')):
-        out_dir = make_dir(out_dir, f'Track{ref}-{sec}')
+    if not (out_dir/f'Track{ref}-{sec}').is_dir():
+        make_dir(out_dir, f'Track{ref}-{sec}')
+    out_dir = out_dir/f'Track{ref}-{sec}'
 
     # - Create symbolic links for each of the .slc and .par files
     if out_dir != data_dir:
-        if os.path.isfile(os.path.join(out_dir, ref + '.slc')):
-            os.remove(os.path.join(out_dir, ref + '.slc'))
-        os.symlink(os.path.join(data_dir, ref + '.slc'),
-                   os.path.join(out_dir, ref + '.slc'))
-        # -
-        if os.path.isfile(os.path.join(out_dir, ref + '.par')):
-            os.remove(os.path.join(out_dir, ref + '.par'))
-        os.symlink(os.path.join(data_dir, ref + '.par'),
-                   os.path.join(out_dir, ref + '.par'))
-        # -
-        if os.path.isfile(os.path.join(out_dir, sec + '.slc')):
-            os.remove(os.path.join(out_dir, sec + '.slc'))
-        os.symlink(os.path.join(data_dir, sec + '.slc'),
-                   os.path.join(out_dir, sec + '.slc'))
-        # -
-        if os.path.isfile(os.path.join(out_dir, sec + '.par')):
-            os.remove(os.path.join(out_dir, sec + '.par'))
-        os.symlink(os.path.join(data_dir, sec + '.par'),
-                   os.path.join(out_dir, sec + '.par'))
+        for slc in [ref, sec]:
+            # - SLC
+            slc_ln = out_dir/f'{slc}.slc'
+            if slc_ln.is_file():
+                os.remove(str(slc_ln))
+            slc_ln.symlink_to((data_dir/f'{slc}.slc').resolve())
+            # - PAR
+            par_ln = out_dir/f'{slc}.par'
+            if par_ln.is_file():
+                os.remove(str(par_ln))
+            par_ln.symlink_to((data_dir/f'{slc}.par').resolve())
         # - Update data_dir value
         data_dir = out_dir
+
+    # - Convert Pathlib objects to string type
+    data_dir = str(data_dir)
+    out_dir = str(out_dir)
 
     # - Create New ISP Parameter file
     create_isp_par(data_dir, ref, sec)
