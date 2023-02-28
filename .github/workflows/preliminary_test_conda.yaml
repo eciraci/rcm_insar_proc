@@ -20,7 +20,7 @@ jobs:
           - os: ubuntu-latest
             label: linux-64b
             prefix: /usr/share/miniconda3/envs/my-env
-            python-version: 3.10
+            python-version: '3.10'
 
     name: ${{ matrix.label }}
     runs-on: ${{ matrix.os }}
