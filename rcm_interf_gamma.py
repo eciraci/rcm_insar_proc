@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+u"""
+Temporal Doc Stirg
+"""
 # - Python Dependencies
 from __future__ import print_function
 import os
