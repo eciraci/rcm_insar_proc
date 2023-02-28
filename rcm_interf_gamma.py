@@ -77,8 +77,8 @@ def main() -> None:
     sec = proc_param['global_parameters']['seconday_slc']   # - Secondary SLC
 
     # - Track Output directory
-    if os.path.isdir(os.path.join(out_dir, f'Track{ref}-{sec}')):
-        make_dir(out_dir, f'Track{ref}-{sec}')
+    if not os.path.isdir(os.path.join(out_dir, f'Track{ref}-{sec}')):
+        out_dir = make_dir(out_dir, f'Track{ref}-{sec}')
 
     # - Create symbolic links for each of the .slc and .par files
     if out_dir != data_dir:
