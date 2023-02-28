@@ -76,6 +76,34 @@ def main() -> None:
     ref = proc_param['global_parameters']['refrence_slc']  # - Reference SLC
     sec = proc_param['global_parameters']['seconday_slc']   # - Secondary SLC
 
+    # - Track Output directory
+    if os.path.isdir(os.path.join(out_dir, f'Track{ref}-{sec}')):
+        make_dir(out_dir, f'Track{ref}-{sec}')
+
+    # - Create symbolic links for each of the .slc and .par files
+    if out_dir != data_dir:
+        if os.path.isfile(os.path.join(out_dir, ref + '.slc')):
+            os.remove(os.path.join(out_dir, ref + '.slc'))
+        os.symlink(os.path.join(data_dir, ref + '.slc'),
+                   os.path.join(out_dir, ref + '.slc'))
+        # -
+        if os.path.isfile(os.path.join(out_dir, ref + '.par')):
+            os.remove(os.path.join(out_dir, ref + '.par'))
+        os.symlink(os.path.join(data_dir, ref + '.par'),
+                   os.path.join(out_dir, ref + '.par'))
+        # -
+        if os.path.isfile(os.path.join(out_dir, sec + '.slc')):
+            os.remove(os.path.join(out_dir, sec + '.slc'))
+        os.symlink(os.path.join(data_dir, sec + '.slc'),
+                   os.path.join(out_dir, sec + '.slc'))
+        # -
+        if os.path.isfile(os.path.join(out_dir, sec + '.par')):
+            os.remove(os.path.join(out_dir, sec + '.par'))
+        os.symlink(os.path.join(data_dir, sec + '.par'),
+                   os.path.join(out_dir, sec + '.par'))
+        # - Update data_dir value
+        data_dir = out_dir
+
     # - Create New ISP Parameter file
     create_isp_par(data_dir, ref, sec)
 
@@ -111,7 +139,6 @@ def main() -> None:
                       os.path.join(data_dir, 'sparse_offsets.txt'),
                       '-', nr, naz
                       )
-
 
 
 # - run main program
