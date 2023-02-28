@@ -1,0 +1,35 @@
+---
+# RCM InSAR Processing Parameters - Template
+global_parameters:
+  data_directory: ''    # - Absolute Path
+  output_directory: ''  # - Absolute Path
+  refrence_slc: ''    # - File Name Only
+  seconday_slc: ''    # - File Name Only
+  keep_intermediate_files: False
+
+# - Preliminary Offsets Calculation Parameters
+# - Needed to compute the first registration polynomial
+# - [Optional] If not provided, the default values will be used
+preliminary_offsets_parameters:
+  p_doff: False
+  # - if p_doff is True, define Search Window and Skip
+  search_window: 64     # - use same value in range azimuth direction
+  skip: 32
+  # - number of offset estimates in range/azimuth direction [offset_pwr]
+  naz: 128
+  nr: 128
+
+# - AMPCOR [Dense Offsets] Calculation Parameters
+ampcor_parameters:
+  search_window: 64
+  skip: 32
+  # - Dense Offsets smoothing  and filtering parameters
+  off_filter: 1     # - Offsets filtering strategy [1, 2]
+  off_smooth: True  # - Smooth Offsets
+  off_fill: False   # - Fill Offsets NaNs
+
+
+# - Geocoding Parameters
+dem: ''    # Dem Name
+dem_path: ''    # Dem Path
+oversampling: 10    # - DEM Oversampling factor
