@@ -481,7 +481,7 @@ def main() -> None:
     # - Estimate and Remove Topographic Phase from the flattened interferogram
     dem = proc_param['DEM']['dem']
     dem_path = proc_param['DEM']['path']
-    dem_par = dem_path, proc_param['DEM']['par']
+    dem_par = proc_param['DEM']['par']
     dem_oversmp = proc_param['DEM']['oversampling']
     dem_par = os.path.join(dem_path, dem_par)
     dem = os.path.join(dem_path, dem)
