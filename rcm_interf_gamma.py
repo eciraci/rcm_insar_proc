@@ -668,7 +668,7 @@ def main() -> None:
         os.remove(os.path.join(data_dir, f'{sec}.reg2.slc'))
 
     # - If the processing is successful, move parameter file to output directory
-    shutil.move(os.path.jooin(current_dir, processing_parameters_yml), out_dir)
+    shutil.move(os.path.join(current_dir, processing_parameters_yml), out_dir)
 
 
 # - run main program
