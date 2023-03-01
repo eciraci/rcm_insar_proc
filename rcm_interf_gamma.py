@@ -492,11 +492,11 @@ def main() -> None:
 
     pg.gc_map(os.path.join(data_dir_gc, f'{ref}.par'),
               os.path.join(data_dir_gc, f'{ref}-{sec}.reg2.par'),
-              dem_par,  # - DEM/MAP parameter file
-              dem,  # - DEM data file (or constant height value)
-              dem_par,  # - DEM segment used...
-              'DEMice_gc',  # - DEM segment used for output products...
-              'gc_icemap',  # - geocoding lookup table (fcomplex)
+              dem_par,          # - DEM/MAP parameter file
+              dem,              # - DEM data file (or constant height value)
+              proc_param['DEM']['par'],     # - DEM segment used...
+              'DEMice_gc',      # - DEM segment used for output products...
+              'gc_icemap',      # - geocoding lookup table (fcomplex)
               dem_oversmp, dem_oversmp,
               'sar_map_in_dem_geometry',
               '-', '-', 'inc.geo', '-', '-', '-', '-', '2', '-'
