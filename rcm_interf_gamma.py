@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 u"""
+Enrico Ciraci' - 03/2023
+
 RCM Interferogram generation pipeline.
  -> Compute Interferogram for the selected pair.
 
