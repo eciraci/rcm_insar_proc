@@ -2,6 +2,7 @@ name: pygamma_env
 channels:
   - conda-forge
 dependencies:
+  - python>=3.10
   - numpy >=1.23.3
   - scipy
   - astropy >=5.1.1

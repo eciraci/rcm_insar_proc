@@ -1,6 +1,7 @@
 # RADARSAT Constellation Mission (RCM) ICEYE InSAR Processor
 
 [![Language][]][1]
+[![License][]][1]
 
 Interferometric processor for Synthetic Aperture Radar (SAR) data from the **[RCM][]**
 satellite constellation based on **[GAMMA Software][]**.
@@ -25,7 +26,7 @@ satellite constellation based on **[GAMMA Software][]**.
     Software within Python ([Link][3]);
 
 ---
-### DInSAR Workflow - Double-Difference Interferogram Generation Workflow
+#### DInSAR Workflow - Double-Difference Interferogram Generation Workflow
 ```mermaid
   graph LR;
       A[Compute Offsets from orbit SV]-->D[(Compute Dense Offsets - AMPCOR)];
@@ -48,7 +49,8 @@ satellite constellation based on **[GAMMA Software][]**.
 - [tqdm: A Fast, Extensible Progress Bar for Python and CLI][]
 
 
-  [Language]: https://img.shields.io/badge/python%20-3.7%2B-brightgreen
+  [Language]: https://img.shields.io/badge/python-%3E%3D%203.10-blue
+  [License]: https://img.shields.io/bower/l/MI
   [1]: ..%20image::%20https://www.python.org/
   [ICEYE]: ..%20image::%20https://www.iceye.com/
   [GAMMA Software]: ..%20image::%20https://www.gammasoftware.com/
