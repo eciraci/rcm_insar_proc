@@ -28,15 +28,24 @@ satellite constellation based on **[GAMMA Software][]**.
 ---
 #### DInSAR Workflow - Double-Difference Interferogram Generation Workflow
 ```mermaid
-  graph LR;
-      A[Compute Offsets from orbit SV]-->D[(Compute Dense Offsets - AMPCOR)];
-      B[Multi Look SLCs]-->D;
-      C[Decimate State Vectors]-.->D;
-      D-->E[Compute Interferogram];
-      E-->F[Geocode Interferogram Interferogram];
-      F-->G[Computed Double Difference];
-      style D fill:#007b25,stroke:#333,stroke-width:4px
+  graph TB;
+      A[SLC-1]-->C[Preliminary Offsets];
+      B[SLC-2]-->C;
+      B-.->E
+      C[Compute PreliminaryOffsets]-->D;
+      D([Resample SLC2 - SLC_Interp])-->E;
+      E[Compute Dense Offsets]
+      E-->F([Resample SLC2r - SLC_Interp_map]);
+      F-->G[(Interferogram A)]-->I;
+      H[(Interferogram B)] -->I;
+      I[(Double Difference Interferogram)];
+      style C fill:#007b25,stroke:#333,stroke-width:4px
+      style D fill:#0d6ccb,stroke:#333,stroke-width:4px
+      style E fill:#007b25,stroke:#333,stroke-width:4px
       style F fill:#0d6ccb,stroke:#333,stroke-width:4px
+      style G fill:#00758f,stroke:#000000,stroke-width:4px
+      style H fill:#00758f,stroke:#000000,stroke-width:4px
+      style I fill:#990000,stroke:#000000,stroke-width:4px
 
 ```
 
