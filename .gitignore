@@ -1,3 +1,5 @@
+# Add Pycharm style project files to the ignore list
+.idea/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
