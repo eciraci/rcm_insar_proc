@@ -1,10 +1,10 @@
 ---
 # RCM InSAR Processing Parameters - Template
 global_parameters:
-  data_directory: ''    # - Absolute Path
-  output_directory: ''  # - Absolute Path
-  refrence_slc: ''    # - File Name Only
-  seconday_slc: ''    # - File Name Only
+  data_directory: '.'    # - Absolute Path
+  output_directory: '.'  # - Absolute Path
+  refrence_slc: '2312321'    # - File Name Only
+  seconday_slc: '31231221331'    # - File Name Only
   keep_intermediate_files: False
 
 # - Preliminary Offsets Calculation Parameters
@@ -33,8 +33,15 @@ ampcor_parameters:
   off_smooth: True  # - Smooth Offsets
   off_fill: False   # - Fill Offsets NaNs
 
+# - Interferogram Calculation Parameters
+interf_param:
+  nlks_az: 15
+  nlks_rn: 15
+
 
 # - Geocoding Parameters
-dem: ''    # Dem Name
-dem_path: ''    # Dem Path
-oversampling: 10    # - DEM Oversampling factor
+DEM:
+  dem: 'TDX_DEM_500m.filtered.ASTER_PEN.BEDMAP2.v2.dat'    # Dem Name
+  dem_path: '$DAT_PATH/ANTARCTICA/DEM/TanDEM-X_500m'    # Dem Path
+  oversampling: 10      # - DEM Oversampling factor
+  par: DEM_gc_par      # - Geocoding Parameter File Name

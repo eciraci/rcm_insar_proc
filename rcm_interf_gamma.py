@@ -475,97 +475,98 @@ def main() -> None:
     # - Show Output Interferogram
     pg9.rasmph_pwr(
         os.path.join(data_dir, f'coco{ref}-{sec}.flat.filt'),
-        os.path.join(data_dir, f'{ref}.pwr1.bmp'), interf_width
+        os.path.join(data_dir, f'{ref}.pwr1'), interf_width
     )
 
-    # # - Estimate and Remove Topographic Phase from the flattened interferogram
-    # dem = args.dem
-    # dem_info = path_to_dem(dem, oversample=args.dem_of)
-    # dem_info['path'] = dem_info['path']
-    # dem_par = os.path.join(dem_info['path'].replace(' ', '\ '), dem_info['par'])
-    # dem = os.path.join(dem_info['path'].replace(' ', '\ '), dem_info['dem'])
-    # data_dir_gc = data_dir.replace(' ', '\ ')
-    #
-    # pg.gc_map(os.path.join(data_dir_gc, f'{ref}.par'),
-    #           os.path.join(data_dir_gc, f'{ref}-{sec}.reg2.par'),
-    #           dem_par,  # - DEM/MAP parameter file
-    #           dem,  # - DEM data file (or constant height value)
-    #           dem_info['par'],  # - DEM segment used...
-    #           'DEMice_gc',  # - DEM segment used for output products...
-    #           'gc_icemap',  # - geocoding lookup table (fcomplex)
-    #           dem_info['oversample'], dem_info['oversample'],
-    #           'sar_map_in_dem_geometry',
-    #           '-', '-', 'inc.geo', '-', '-', '-', '-', '2', '-'
-    #           )
-    #
-    # # - Extract DEM Size from parameter file
-    # dem_par_path = os.path.join('.', 'DEM_gc_par')
-    # dem_param_dict = pg.ParFile(dem_par_path).par_dict
-    # dem_width = int(dem_param_dict['width'][0])
-    # dem_nlines = int(dem_param_dict['nlines'][0])
-    #
-    # print(f'# - DEM Size: {dem_nlines} x {dem_width}')
-    #
-    # # - Forward geocoding transformation using a lookup table
-    # pg.geocode('gc_icemap', 'DEMice_gc', dem_width, 'hgt_icemap',
-    #            interf_width, interf_lines)
-    # pg.geocode('gc_icemap', 'inc.geo', dem_width, 'inc',
-    #            interf_width, interf_lines)
-    #
-    # # - Invert geocoding lookup table
-    # pg.gc_map_inversion('gc_icemap', dem_width, 'gc_map_invert',
-    #                     interf_width, interf_lines)
-    #
-    # # - Geocoding of Reference SLC power using a geocoding lookup table
-    # pg.geocode_back(os.path.join(data_dir, f'{ref}.mli'), interf_width,
-    #                 'gc_icemap',
-    #                 os.path.join(data_dir, f'{ref}.mli.geo'),
-    #                 dem_width, dem_nlines)
-    # pg9.raspwr(os.path.join(data_dir, f'{ref}.mli.geo'), dem_width)
-    #
-    # # - Remove Interferometric Phase component due to surface Topography.
-    # # - Simulate unwrapped interferometric phase using DEM height.
-    # pg.phase_sim(os.path.join(data_dir, f'{ref}.par'),
-    #              os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
-    #              os.path.join(data_dir, f'base{ref}-{sec}.reg2.dat'),
-    #              'hgt_icemap',
-    #              'sim_phase', 1, 0, '-'
-    #              )
-    # # - Create DIFF/GEO parameter file for geocoding and
-    # # - differential interferometry
-    # pg.create_diff_par(os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
-    #                    os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
-    #                    'DIFF_par', '-', 0)
-    #
-    # # - Subtract topographic phase from interferogram
-    # pg.sub_phase(os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat'),
-    #              'sim_phase', 'DIFF_par',
-    #              os.path.join(data_dir,
-    #                           f'coco{ref}-{sec}.reg2.intf.flat.topo_off'), 1
-    #              )
-    # # - Show interferogram w/o topographic phase
-    # pg9.rasmph_pwr(os.path.join(data_dir,
-    #                             f'coco{ref}-{sec}.reg2.intf.flat.topo_off'),
-    #                os.path.join(data_dir, f'{ref}.mli'), interf_width)
-    #
-    # # - Geocode Output interferogram
-    # # - Reference Interferogram look-up table
-    # ref_gcmap = os.path.join('.', 'gc_icemap')
-    #
-    # # - geocode interferogram
-    # pg.geocode_back(
-    #     os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat.topo_off'),
-    #     interf_width,  ref_gcmap,
-    #     os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat.topo_off.geo'),
-    #     dem_width, dem_nlines, '-', 1
-    # )
-    #
-    # # - Show Geocoded interferogram
-    # pg9.rasmph_pwr(
-    #     os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat.topo_off.geo'),
-    #     os.path.join(data_dir, f'{ref}.mli.geo'),  dem_width
-    # )
-    #
+    # - Estimate and Remove Topographic Phase from the flattened interferogram
+    dem = proc_param['DEM']['dem']
+    dem_path = proc_param['DEM']['path']
+    dem_par = proc_param['DEM']['par']
+    dem_oversmp = proc_param['DEM']['oversampling']
+    dem_path = proc_param['DEM']['path']
+    dem_par = os.path.join(dem_path, dem_par)
+    dem = os.path.join(dem_path, dem)
+
+    pg.gc_map(os.path.join(data_dir, f'{ref}.par'),
+              os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
+              dem_par,  # - DEM/MAP parameter file
+              dem,  # - DEM data file (or constant height value)
+              dem_par,  # - DEM segment used...
+              'DEMice_gc',  # - DEM segment used for output products...
+              'gc_icemap',  # - geocoding lookup table (fcomplex)
+              dem_oversmp, dem_oversmp,
+              'sar_map_in_dem_geometry',
+              '-', '-', 'inc.geo', '-', '-', '-', '-', '2', '-'
+              )
+
+    # - Extract DEM Size from parameter file
+    dem_par_path = os.path.join('.', 'DEM_gc_par')
+    dem_param_dict = pg.ParFile(dem_par_path).par_dict
+    dem_width = int(dem_param_dict['width'][0])
+    dem_nlines = int(dem_param_dict['nlines'][0])
+
+    print(f'# - DEM Size: {dem_nlines} x {dem_width}')
+
+    # - Forward geocoding transformation using a lookup table
+    pg.geocode('gc_icemap', 'DEMice_gc', dem_width, 'hgt_icemap',
+               interf_width, interf_lines)
+    pg.geocode('gc_icemap', 'inc.geo', dem_width, 'inc',
+               interf_width, interf_lines)
+
+    # - Invert geocoding lookup table
+    pg.gc_map_inversion('gc_icemap', dem_width, 'gc_map_invert',
+                        interf_width, interf_lines)
+
+    # - Geocoding of Reference SLC power using a geocoding lookup table
+    pg.geocode_back(os.path.join(data_dir, f'{ref}.mli'), interf_width,
+                    'gc_icemap',
+                    os.path.join(data_dir, f'{ref}.mli.geo'),
+                    dem_width, dem_nlines)
+    pg9.raspwr(os.path.join(data_dir, f'{ref}.mli.geo'), dem_width)
+
+    # - Remove Interferometric Phase component due to surface Topography.
+    # - Simulate unwrapped interferometric phase using DEM height.
+    pg.phase_sim(os.path.join(data_dir, f'{ref}.par'),
+                 os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
+                 os.path.join(data_dir, f'base{ref}-{sec}.reg2.dat'),
+                 'hgt_icemap',
+                 'sim_phase', 1, 0, '-'
+                 )
+    # - Create DIFF/GEO parameter file for geocoding and
+    # - differential interferometry
+    pg.create_diff_par(os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
+                       os.path.join(data_dir, f'{ref}-{sec}.reg2.par'),
+                       'DIFF_par', '-', 0)
+
+    # - Subtract topographic phase from interferogram
+    pg.sub_phase(os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat'),
+                 'sim_phase', 'DIFF_par',
+                 os.path.join(data_dir,
+                              f'coco{ref}-{sec}.reg2.intf.flat.topo_off'), 1
+                 )
+    # - Show interferogram w/o topographic phase
+    pg9.rasmph_pwr(os.path.join(data_dir,
+                                f'coco{ref}-{sec}.reg2.intf.flat.topo_off'),
+                   os.path.join(data_dir, f'{ref}.mli'), interf_width)
+
+    # - Geocode Output interferogram
+    # - Reference Interferogram look-up table
+    ref_gcmap = os.path.join('.', 'gc_icemap')
+
+    # - geocode interferogram
+    pg.geocode_back(
+        os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat.topo_off'),
+        interf_width,  ref_gcmap,
+        os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat.topo_off.geo'),
+        dem_width, dem_nlines, '-', 1
+    )
+
+    # - Show Geocoded interferogram
+    pg9.rasmph_pwr(
+        os.path.join(data_dir, f'coco{ref}-{sec}.reg2.intf.flat.topo_off.geo'),
+        os.path.join(data_dir, f'{ref}.mli.geo'),  dem_width
+    )
+
     # if args.filter:
     #     # - Smooth the obtained interferogram with pg.adf
     #     # - Adaptive interferogram filter using the power spectral density.
