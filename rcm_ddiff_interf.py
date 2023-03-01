@@ -102,7 +102,7 @@ def main() -> None:
         = os.path.join(data_dir_sec, 'coco' + igram_sec + '.flat.topo_off.geo')
     # - Geocoded Reference SLC Power Intensity
     ref_pwr \
-        = os.path.join(data_dir_ref, igram_ref.split('-')[0] + '.pwr1')
+        = os.path.join(data_dir_ref, igram_ref.split('-')[0] + '.pwr1.geo')
 
     # - Path to Interferograms Baseline Files
     ref_base \
