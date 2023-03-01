@@ -73,9 +73,9 @@ def main() -> None:
 
     # - Processing Parameters
     # - Reference SLC
-    igram_ref = proc_param['global_parameters']['refrence_intf']
+    igram_ref = proc_param['global_parameters']['reference_intf']
     # - Secondary SLC
-    igram_sec = proc_param['global_parameters']['seconday_intf']
+    igram_sec = proc_param['global_parameters']['secondary_intf']
 
     data_dir_ref = os.path.join(str(data_dir), f'Track{igram_ref}')
     data_dir_sec = os.path.join(str(data_dir), f'Track{igram_sec}')
