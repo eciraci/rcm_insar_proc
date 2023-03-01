@@ -16,7 +16,7 @@ def fill_nodata(data_arr: np.ndarray, mask_arr: np.ndarray,
                 max_search_dist: int = 1000,
                 smth_iter: int = 10) -> np.ndarray:
     """
-    Fill NoData values in a 2D array using GDAL's FillNodata function.
+    Fill NoData values in a 2D array using GDAL's FillNodata function
     :param data_arr: input 2D array [numpy ndarray]
     :param mask_arr: mask array [numpy ndarray]
     :param max_search_dist: maximum search distance [int]

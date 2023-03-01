@@ -12,7 +12,7 @@ from scipy.signal import medfilt
 def median_filter_off(off: np.ndarray, size: int = 9,
                       thre: int = 3) -> np.ndarray:
     """
-    Median filter for offset array.
+    Median filter for offset array
     :param off: offsets array [numpy ndarray - complex]
     :param size: median filter size [int]
     :param thre: median filter threshold [int]

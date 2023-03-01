@@ -50,7 +50,7 @@ import py_gamma2019 as pg9
 # - ST_Release dependencies
 from scipy.signal import medfilt
 from astropy.convolution import convolve, Box2DKernel
-from st_release.madian_filter_off import median_filter_off
+from st_release.median_filter_off import median_filter_off
 from st_release.fill_nodata import fill_nodata
 from utils.make_dir import make_dir
 
