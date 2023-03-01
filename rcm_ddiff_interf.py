@@ -66,6 +66,7 @@ def main() -> None:
     # - Input/Output Directories
     data_dir = Path(proc_param['global_parameters']['data_directory']).resolve()
     out_dir = Path(proc_param['global_parameters']['output_directory']).resolve()
+    current_dir = str(Path.cwd().resolve())
 
     if not data_dir.is_dir():
         raise NotADirectoryError(f'{data_dir} - Not Found.')
@@ -170,7 +171,7 @@ def main() -> None:
         os.chmod(out_file, 0o0755)
 
     # - If the processing is successful, move parameter file to output directory
-    shutil.move(processing_parameters_yml, out_dir)
+    shutil.move(os.path.join(current_dir, processing_parameters_yml), out_dir)
 
 
 # - run main program
