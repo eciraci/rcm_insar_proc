@@ -1,0 +1,9 @@
+---
+# RCM Double-Difference InSAR Processing Parameters - Template
+# NOTE: boolean variables must be reported as False/ True
+
+global_parameters:
+  data_directory: '.'     # - Absolute Path
+  output_directory: '.'   # - Absolute Path
+  reference_intf: ''       # - File Name Only
+  secondary_intf: ''       # - File Name Only

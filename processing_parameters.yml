@@ -15,7 +15,7 @@ global_parameters:
 #                      by computing full dense offsets map
 #                      -> [gamma.offset_pwr_tracking]
 #            False  -> Estimate registration polynomial
-#                      computing offsers on a regular grid
+#                      computing offsets on a regular grid
 #                      -> [gamma.offset_pwr]
 
 preliminary_offsets_parameters:

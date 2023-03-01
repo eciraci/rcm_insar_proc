@@ -13,6 +13,9 @@ positional arguments:
 options:
   -h, --help  show this help message and exit
 
+NOTE: for a param_yaml template see:
+      rcm_insar_proc/processing_parameters.yml
+
 # - Python Dependencies
 argparse: Parser for command-line options, arguments and subcommands
           https://docs.python.org/3/library/argparse.html
@@ -658,10 +661,10 @@ def main() -> None:
             shutil.move(o_fl, save_dir)
 
     if not keep_f:
-        os.remove(os.path.join(data_dir, f'{ref}.reg.par'))
-        os.remove(os.path.join(data_dir, f'{ref}.reg.slc'))
-        os.remove(os.path.join(data_dir, f'{ref}.reg2.par'))
-        os.remove(os.path.join(data_dir, f'{ref}.reg2.slc'))
+        os.remove(os.path.join(data_dir, f'{sec}.reg.par'))
+        os.remove(os.path.join(data_dir, f'{sec}.reg.slc'))
+        os.remove(os.path.join(data_dir, f'{sec}.reg2.par'))
+        os.remove(os.path.join(data_dir, f'{sec}.reg2.slc'))
 
 
 # - run main program
