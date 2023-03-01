@@ -334,11 +334,11 @@ def main() -> None:
     naz = proc_param['preliminary_offsets_parameters']['naz']
 
     # - Dense Offsets Parameters
-    s_window_amp = proc_param['preliminary_offsets_parameters']['search_window']
-    skip_amp = proc_param['preliminary_offsets_parameters']['skip']
-    off_filter = proc_param['preliminary_offsets_parameters']['off_filter']
-    off_smooth = proc_param['preliminary_offsets_parameters']['off_smooth']
-    off_fill = proc_param['preliminary_offsets_parameters']['off_fill']
+    s_window_amp = proc_param['ampcor_parameters']['search_window']
+    skip_amp = proc_param['ampcor_parameters']['skip']
+    off_filter = proc_param['ampcor_parameters']['off_filter']
+    off_smooth = proc_param['ampcor_parameters']['off_smooth']
+    off_fill = proc_param['ampcor_parameters']['off_fill']
 
     # - Interferogram Calculation Parameter
     nlks_az = proc_param['interf_param']['nlks_az']
