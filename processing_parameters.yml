@@ -1,5 +1,7 @@
 ---
 # RCM InSAR Processing Parameters - Template
+# NOTE: boolean variables must be reported as False/ True
+
 global_parameters:
   data_directory: '.'    # - Absolute Path
   output_directory: '.'  # - Absolute Path
@@ -15,6 +17,7 @@ global_parameters:
 #            False  -> Estimate registration polynomial
 #                      computing offsers on a regular grid
 #                      -> [gamma.offset_pwr]
+
 preliminary_offsets_parameters:
   p_doff: False
   # - if p_doff is True, define Search Window and Skip
@@ -38,7 +41,6 @@ interf_param:
   nlks_az: 15       # - Interferogram Number of Looks Azimuth
   nlks_rn: 15       # - Interferogram Number of Looks Range
   filter: False     # - Compute filtered interferogram
-
 
 # - Geocoding Parameters
 DEM:
