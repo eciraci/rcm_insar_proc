@@ -332,7 +332,7 @@ def main() -> None:
     # skip = proc_param['preliminary_offsets_parameters']['skip']
     # nr = proc_param['preliminary_offsets_parameters']['nr']
     # naz = proc_param['preliminary_offsets_parameters']['naz']
-    #
+
     # # - Dense Offsets Parameters
     # s_window_amp = proc_param['ampcor_parameters']['search_window']
     # skip_amp = proc_param['ampcor_parameters']['skip']
