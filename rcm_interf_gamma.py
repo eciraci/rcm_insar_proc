@@ -361,6 +361,7 @@ def main() -> None:
     # - Convert Pathlib objects to string type
     data_dir = str(data_dir.resolve())
     out_dir = str(out_dir.resolve())
+    current_dir = str(Path.cwd().resolve())
 
     # - Create New ISP Parameter file
     create_isp_par(data_dir, ref, sec)
@@ -667,7 +668,7 @@ def main() -> None:
         os.remove(os.path.join(data_dir, f'{sec}.reg2.slc'))
 
     # - If the processing is successful, move parameter file to output directory
-    shutil.move(processing_parameters_yml, out_dir)
+    shutil.move(os.path.jooin(current_dir, processing_parameters_yml), out_dir)
 
 
 # - run main program
