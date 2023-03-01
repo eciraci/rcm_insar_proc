@@ -39,6 +39,7 @@ import argparse
 import datetime
 import yaml
 from pathlib import Path
+import shutil
 # - GAMMA's Python integration with the py_gamma module
 import py_gamma as pg
 import py_gamma2019 as pg9
@@ -47,7 +48,7 @@ from utils.make_dir import make_dir
 
 def main() -> None:
     """
-    Interferogram generation pipeline
+    Double-difference Interferogram Calculation - GAMMA Pipeline.
     """
     parser = argparse.ArgumentParser(
         description="""Compute RCM Double-Difference Interferograms."""
@@ -87,6 +88,7 @@ def main() -> None:
     if not os.path.isdir(data_dir_sec):
         print(f'# - {data_dir_sec} - Not Found.')
         sys.exit()
+
     # - Path to Geocoded Interferogram Parameter Files
     ref_par = os.path.join(data_dir_ref, 'DEM_gc_par')
     sec_par = os.path.join(data_dir_sec, 'DEM_gc_par')
@@ -161,6 +163,14 @@ def main() -> None:
                      + '.flat.topo_off.geo.filt.coh', 2,
                      'coco' + igram_ref + '-' + igram_sec
                      + '.flat.topo_off.geo.filt.coh.tiff', -9999)
+
+    # - Change Permission Access to all the files contained inside the
+    # - output directory.
+    for out_file in os.listdir('.'):
+        os.chmod(out_file, 0o0755)
+
+    # - If the processing is successful, move parameter file to output directory
+    shutil.move(processing_parameters_yml, out_dir)
 
 
 # - run main program
