@@ -320,8 +320,8 @@ def main() -> None:
         data_dir = out_dir
 
     # - Convert Pathlib objects to string type
-    data_dir = str(data_dir)
-    out_dir = str(out_dir)
+    data_dir = str(data_dir.resolve())
+    out_dir = str(out_dir.resolve())
 
     # # - Create New ISP Parameter file
     # create_isp_par(data_dir, ref, sec)
