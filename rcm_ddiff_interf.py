@@ -63,8 +63,8 @@ def main() -> None:
 
     # - Print Processing Parameters
     # - Input/Output Directories
-    data_dir = Path(proc_param['global_parameters']['data_directory'])
-    out_dir = Path(proc_param['global_parameters']['output_directory'])
+    data_dir = Path(proc_param['global_parameters']['data_directory']).resolve()
+    out_dir = Path(proc_param['global_parameters']['output_directory']).resolve()
 
     if not data_dir.is_dir():
         raise NotADirectoryError(f'{data_dir} - Not Found.')
