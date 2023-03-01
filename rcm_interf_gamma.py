@@ -647,9 +647,9 @@ def main() -> None:
                         interf_width, interf_lines)
 
     # - Geocoding of Reference SLC power using a geocoding lookup table
-    pg.geocode_back(os.path.join(data_dir_gc, f'{ref}.mli'), interf_width,
+    pg.geocode_back(os.path.join(data_dir_gc, f'{ref}.pwr1'), interf_width,
                     os.path.join(data_dir_gc, 'gc_icemap'),
-                    os.path.join(data_dir_gc, f'{ref}.mli.geo'),
+                    os.path.join(data_dir_gc, f'{ref}.pwr1.geo'),
                     dem_width, dem_nlines)
     pg9.raspwr(os.path.join(data_dir_gc, f'{ref}.mli.geo'), dem_width)
 
@@ -676,7 +676,7 @@ def main() -> None:
                  )
     # - Show interferogram w/o topographic phase
     pg9.rasmph_pwr(os.path.join(data_dir_gc, f'coco{ref}-{sec}.flat.topo_off'),
-                   os.path.join(data_dir_gc, f'{ref}.mli'), interf_width)
+                   os.path.join(data_dir_gc, f'{ref}.pwr1'), interf_width)
 
     # - Geocode Output interferogram
     # - Reference Interferogram look-up table
@@ -693,7 +693,7 @@ def main() -> None:
     # - Show Geocoded interferogram
     pg9.rasmph_pwr(
         os.path.join(data_dir_gc, f'coco{ref}-{sec}.flat.topo_off.geo'),
-        os.path.join(data_dir_gc, f'{ref}.mli.geo'),  dem_width
+        os.path.join(data_dir_gc, f'{ref}.pwr1.geo'),  dem_width
     )
 
     # if args.filter:
