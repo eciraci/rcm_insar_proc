@@ -10,7 +10,7 @@ satellite constellation based on **[GAMMA Software][]**.
 
 1. Setup minimal **conda** installation using [Miniconda][]
 
-2. Create Python Virtual Environment
+2. Setup a Python Virtual Environment
 
     > -   Creating an environment with commands ([Link][]);
     > -   Creating an environment from an environment.yml file
@@ -51,11 +51,15 @@ satellite constellation based on **[GAMMA Software][]**.
 
 **PYTHON DEPENDENCIES**:  
 - [py_gamma: Gamma Remote Sensing Python Integration][]
+- [gdal: Geospatial Data Abstraction Library][]
 - [numpy: The fundamental package for scientific computing with Python][]
 - [scipy: Fundamental library for scientific computing][]
 - [astropy: A Community Python Library for Astronomy][]
 - [matplotlib: Python 2D plotting library][]
 - [tqdm: A Fast, Extensible Progress Bar for Python and CLI][]
+- [pytest: Simple powerful testing with Python][]
+- [pylint: Python code static checker][]
+- [flake8: Python code checker][]
 
 
   [Language]: https://img.shields.io/badge/python-%3E%3D%203.10-blue
@@ -63,6 +67,7 @@ satellite constellation based on **[GAMMA Software][]**.
   [1]: ..%20image::%20https://www.python.org/
   [ICEYE]: ..%20image::%20https://www.iceye.com/
   [GAMMA Software]: ..%20image::%20https://www.gammasoftware.com/
+  [RCM]: ..%20image::%20https://www.asc-csa.gc.ca/eng/satellites/radarsat/
   [Miniconda]: https://docs.conda.io/en/latest/miniconda.html
   [Link]: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands
   [2]: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file
@@ -74,3 +79,7 @@ satellite constellation based on **[GAMMA Software][]**.
   [matplotlib: Python 2D plotting library]: https://matplotlib.org/
   [astropy: A Community Python Library for Astronomy]: https://www.astropy.org/
   [tqdm: A Fast, Extensible Progress Bar for Python and CLI]: https://github.com/tqdm/tqdm
+  [gdal: Geospatial Data Abstraction Library]: ..%20image::%20https://gdal.org/api/python_bindings.html
+  [pytest: Simple powerful testing with Python]: https://docs.pytest.org/en/stable/
+  [pylint: Python code static checker]: https://www.pylint.org/
+  [flake8: Python code checker]: https://flake8.pycqa.org/en/latest/
