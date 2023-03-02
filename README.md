@@ -1,4 +1,4 @@
-# RADARSAT Constellation Mission (RCM) ICEYE InSAR Processor
+# RADARSAT Constellation Mission (RCM) InSAR Processor
 
 [![Language][]][1]
 [![License][]][1]
