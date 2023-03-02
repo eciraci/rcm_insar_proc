@@ -73,13 +73,13 @@ satellite constellation based on **[GAMMA Software][]**.
   [2]: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file
   [3]: https://gamma-rs.ch/uploads/media/upgrades_info_20210701.pdf
   [numpy: The fundamental package for scientific computing with Python]: https://numpy.org
-  [py_gamma: Gamma Remote Sensing Python Integration]: http://www.gammasoftware.com/
-  [numpy: The fundamental package for scientific computing with Python]: https://numpy.org/
-  [scipy: Fundamental library for scientific computing]: https://scipy.org/
-  [matplotlib: Python 2D plotting library]: https://matplotlib.org/
-  [astropy: A Community Python Library for Astronomy]: https://www.astropy.org/
+  [py_gamma: Gamma Remote Sensing Python Integration]: http://www.gammasoftware.com
+  [numpy: The fundamental package for scientific computing with Python]: https://numpy.org
+  [scipy: Fundamental library for scientific computing]: https://scipy.org
+  [matplotlib: Python 2D plotting library]: https://matplotlib.org
+  [astropy: A Community Python Library for Astronomy]: https://www.astropy.org
   [tqdm: A Fast, Extensible Progress Bar for Python and CLI]: https://github.com/tqdm/tqdm
-  [gdal: Geospatial Data Abstraction Library]: ..%20image::%20https://gdal.org/api/python_bindings.html
-  [pytest: Simple powerful testing with Python]: https://docs.pytest.org/en/stable/
-  [pylint: Python code static checker]: https://www.pylint.org/
-  [flake8: Python code checker]: https://flake8.pycqa.org/en/latest/
+  [gdal: Geospatial Data Abstraction Library]: https://gdal.org/api/python_bindings.html
+  [pytest: Simple powerful testing with Python]: https://docs.pytest.org
+  [pylint: Python code static checker]: https://www.pylint.org
+  [flake8: Python code checker]: https://flake8.pycqa.org
