@@ -659,7 +659,10 @@ def main() -> None:
     # - Change Permission Access to all the files contained inside the
     # - output directory.
     for out_file in os.listdir('.'):
-        os.chmod(out_file, 0o0755)
+        try:
+            os.chmod(out_file, 0o0755)
+        except PermissionError:
+            continue
 
     # - Move sparse and dense offsets to Save directory
     off_list = [os.path.join(data_dir, x) for x in os.listdir(data_dir)
