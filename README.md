@@ -32,7 +32,7 @@ satellite constellation based on **[GAMMA Software][]**.
       A[SLC-1]-->C[Preliminary Offsets];
       B[SLC-2]-->C;
       B-.->E
-      C[Compute PreliminaryOffsets]-->D;
+      C[Compute Preliminary Offsets]-->D;
       D([Resample SLC2 - SLC_Interp])-->E;
       E[Compute Dense Offsets]
       E-->F([Resample SLC2r - SLC_Interp_map]);

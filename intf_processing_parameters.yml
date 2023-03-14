@@ -5,8 +5,8 @@
 global_parameters:
   data_directory: '.'    # - Absolute Path
   output_directory: '.'  # - Absolute Path
-  refrence_slc: ''    # - File Name Only
-  seconday_slc: ''    # - File Name Only
+  refrence_slc: ''    # - File Name [Code Only]
+  seconday_slc: ''    # - File Name [Code Only]
   keep_intermediate_outputs: False
 
 # - Preliminary Offsets Calculation Parameters
@@ -38,6 +38,7 @@ ampcor_parameters:
 
 # - Interferogram Calculation Parameters
 interf_param:
+  compute: True     # - Compute Interferogram
   nlks_az: 15       # - Interferogram Number of Looks Azimuth
   nlks_rn: 15       # - Interferogram Number of Looks Range
   filter: False     # - Compute filtered interferogram
